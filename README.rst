@@ -1,9 +1,9 @@
 
-=========================
-Leonardo Redactor Wysiwyg
-=========================
+================
+Team Application
+================
 
-A lightweight wysiwyg editor for Leonardo
+A lightweight Team Application for Leonardo CMS and FeinCMS
 
 .. contents::
     :local:
@@ -13,31 +13,28 @@ Installation
 
 .. code-block:: bash
 
-    pip install leonardo-module-redactor
+    pip install leonardo-team
 
 or as leonardo bundle
 
 .. code-block:: bash
 
-    pip install django-leonardo["redactor"]
+    pip install django-leonardo["team"]
 
-Add ``leonardo_module_sentry`` to APPS list, in the ``local_settings.py``::
+Add ``team`` to APPS list, in the ``local_settings.py``::
 
     APPS = [
         ...
-        'leonardo_module_redactor'
+        'team'
         ...
     ]
 
-    REDACTOR_OPTIONS = {
-        'lang': 'en',
-        'plugins': ['table', 'video', 'fullscreen', 'fontcolor', 'textdirection']}
-
-    REDACTOR_UPLOAD = 'uploads/'
-
-Sync static
+Run management commands
 
 .. code-block:: bash
+
+    python manage.py makemigrations --noinput
+    python manage.py migrate --noinput
 
     python manage.py sync_all
 
@@ -45,5 +42,9 @@ Sync static
     
     python manage.py collectstatic --noinput
 
+Read More
+---------
 
+* https://github.com/django-leonardo/django-leonardo
+* leonardo.robotice.org
 
