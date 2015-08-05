@@ -2,12 +2,12 @@
 
 from django.utils.translation import ugettext_lazy as _
 
-from leonardo.module.web.models import Widget
+from leonardo.module.web.models import ListWidget
 
 from team.models import Person
 
 
-class TeamWidget(Widget):
+class TeamWidget(ListWidget):
 
     def get_team(self):
         return Person.objects.all()
