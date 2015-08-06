@@ -1,0 +1,31 @@
+{% extends widget.get_base_template %}
+
+{% load i18n %}
+{% load thumbnail %}
+{% load leonardo_tags %}
+
+{% block content %}
+
+<div style="visibility: visible; animation-name: fadeInUp;" class="col-md-6 col-sm-6 wow fadeInUp showdelay2">
+	{% for object in widget.get_team %}
+		{% thumbnail object.photo "250x250" crop="center" format="PNG" as image %}
+			<div class="team-box">
+				<div class="team-image">
+					<img src="{{ image.url }}" class="img-circle" alt="{{ object.summary }}">	
+				</div>
+				<div class="team-info">
+					<h3>{{ object.full_name }}</h3>
+					<b>{{ object.translation.position }}</b>
+					<p>{{ object.description }}</p>
+					<ul class="team-social">
+						{% for contact in object.contacts.all %}
+						<li><a class="social-links" href="{{ contact.url }}"><div class="{{ contact.engine }} social"></div></a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		{% endthumbnail %}
+	{% endfor %}
+</div>
+
+{% endblock %}
