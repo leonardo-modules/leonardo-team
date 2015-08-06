@@ -11,15 +11,15 @@
 		{% thumbnail object.photo "250x250" crop="center" format="PNG" as image %}
 			<div class="team-box">
 				<div class="team-image">
-					<img src="{{ image.url }}" class="img-circle" alt="{{ object.summary }}">	
+					<a data-title="{{ object.full_name }}" data-footer="{{ object.description }}" data-toggle="lightbox" id="user_{{ object.id }}" href="{{ object.get_absolute_url }}"><img src="{{ image.url }}" class="img-circle" alt="{{ object.summary }}"></a>
 				</div>
 				<div class="team-info">
 					<h3>{{ object.full_name }}</h3>
 					<b>{{ object.translation.position }}</b>
-					<p>{{ object.description }}</p>
+					<p>{{ object.translation.description }}</p>
 					<ul class="team-social">
 						{% for contact in object.contacts.all %}
-						<li><a class="social-links" href="{{ contact.url }}"><div class="{{ contact.engine }} social"></div></a></li>
+						<li><a class="social-links" href="{{ contact.url }}"><div class="fa fa-{{ contact.engine }} social"></div></a></li>
 						{% endfor %}
 					</ul>
 				</div>
@@ -27,5 +27,12 @@
 		{% endthumbnail %}
 	{% endfor %}
 </div>
+
+<script type="text/javascript">
+$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+}); 
+</script>
 
 {% endblock %}
