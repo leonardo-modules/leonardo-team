@@ -1,1 +1,1 @@
-sorl-thumbnail==12.2
+sorl-thumbnail
